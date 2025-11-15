@@ -1,22 +1,28 @@
 SETUP DJANGO
+===
 
 TẢI VỀ
+---
 
 - Git
 - Github pull request extension
 - Github
 
 TẠO SOURCE CONTROL TRONG GIT
+---
 
 Sau khi tải Git về thì reload lại và initialize repository
 
 UP LÊN GITHUB
+---
 
 - Tạo remote trên github là `origin` bằng cách ấn remote từ vscode
+- 
 
 ---
 
 CÁC LỆNH CHECK PHIÊN BẢN
+---
 
 ### PYTHON
 
@@ -37,6 +43,7 @@ django-admin --version
 ```
 
 CÁC LỆNH TẢI VỀ
+---
 
 ### PIP
 
@@ -45,7 +52,7 @@ python get-pip.py
 ```
 
 > [!Caution] 
-> Phải tải [gói pip](https://quantrimang.com/url?u=aHR0cHM6Ly9ib290c3RyYXAucHlwYS5pby9nZXQtcGlwLnB5) hoặc [gói pip cho python 3.2](https://quantrimang.com/url?u=aHR0cHM6Ly9ib290c3RyYXAucHlwYS5pby8zLjIvZ2V0LXBpcC5weQ%3D%3D) về trước
+> Phải tải [gói pip](https://quantrimang.com/url?u=aHR0cHM6Ly9ib290c3RyYXAucHlwYS5pby9nZXQtcGlwLnB5) hoặc [gói pip cho python 3.2](https://quantrimang.com/url?u=aHR0cHM6Ly9ib290c3RyYXAucHlwYS5pby8zLjIvZ2V0LXBpcC5weQ%3D%3D) về trước 
 
 ### TẢI VỀ DJANGO
 
