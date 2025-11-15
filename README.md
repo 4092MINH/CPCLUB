@@ -1,26 +1,6 @@
 SETUP DJANGO
 ===
 
-TẢI VỀ
----
-
-- Git
-- Github pull request extension
-- Github
-
-TẠO SOURCE CONTROL TRONG GIT
----
-
-Sau khi tải Git về thì reload lại và initialize repository
-
-UP LÊN GITHUB
----
-
-- Tạo remote trên github là `origin` bằng cách ấn remote từ vscode
-- 
-
----
-
 CÁC LỆNH CHECK PHIÊN BẢN
 ---
 
