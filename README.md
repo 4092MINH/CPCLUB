@@ -83,7 +83,7 @@ def members(request):
      return HttpResponse("Hello world!")
 ```
 Khi này thì nếu bạn **gọi hàm** này ra thì nó sẽ **phản hồi** thông điệp *Hello World*
-> [!Warning] Cảnh cáo
+> [!Warning]
 > Hiện giờ nó vẫn chưa hiện phản hồi đâu. Nếu muốn hiện thì phải dùng một thứ làm cầu nối
 
 URL
