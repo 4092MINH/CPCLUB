@@ -100,7 +100,7 @@ urlpatterns = [
     path('members/', views.members, name='members'),
 ]
 ```
-> [!Caution] Lưu ý
+> [!Caution]
 > Việc kết nối này mới chỉ có quy mô nằm trong **nội bộ app** thôi. Ta cần phải kết nối file này với file `urls.py` tổng **nằm ngay dưới** thư mục chính của project với format như sau:
 > ```py
 > from django.contrib import admin
