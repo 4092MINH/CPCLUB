@@ -21,7 +21,7 @@ pip --version
 ```
 django-admin --version
 ```
-
+    
 CÁC LỆNH TẢI VỀ
 ---
 
