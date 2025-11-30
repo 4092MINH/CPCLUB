@@ -176,4 +176,76 @@ python manage.py migrate
 ```
 MODEL
 -
-Một class là một cái bảng trong databasse
+Một class trong model là một cái bảng trong databasse
+
+TẠO MỘT MODEL
+-
+Trước tiên, trong Member ta mở file và ghi đoạn sau
+```py
+from django.db import models
+
+class ModelMember(models.Model):
+    firstname = models.CharField(max_length=255)
+    lastname = models.CharField(max_length=255)
+```
+- Mục đầu tiên là `firstname` là một `CharField` chứa firstname
+- `lastname` tương tự
+
+Sau khi tạo xong một model thì ta thực hiện cặp lệnh makemigrations vào
+
+---
+DJANGO ADMIN
+=
+---
+Django Admin là công cụ tuyệt vời giúp chúng ta thay đổi database một cách dễ dàng hơn
+
+TẠO TÀI KHOẢN VÀ TRUY CẬP VÀO ADMIN SITE
+-
+Thực hiện lệnh sau
+```
+python manage.py createsuperuser
+```
+Và chúng ta điền thông tin vào
+
+Sau đó, ta chạy dự án và ở url ta thêm `/admin` là đến giao diện đăng nhập
+
+CÁCH THÊM MODEL
+-
+Chúng ta ghi đoạn code sau
+```py
+from django.contrib import admin
+from .models import ModelMember
+# Register your models here.
+
+# minhpnk - Homnayemdotnha@23
+
+admin.site.register(ModelMember)
+```
+Lúc này, khi quay lại thì ta đã thấy phần cập nhật member
+
+CÁCH THAY ĐỔI NHÃN MODEL
+-
+Rất đơn giản, ta chỉ cần thêm một hàm `__str__()` vào trong model là ok
+```py
+from django.db import models
+
+# Create your models here.
+class ModelMember(models.Model):
+    ho = models.CharField(max_length=255)
+    ten = models.CharField(max_length=255)
+
+    def __str__(self):
+        return f"{self.ho} {self.ten}"
+```
+CÁCH THÊM MỤC HIỂN THỊ VÀ MỤC TÌM KIẾM
+-
+Tạo một hàm tên là `MemberAdmin()` và làm như sau
+```py
+from django.contrib import admin
+from .models import ModelMember
+
+class MemberAdmin(admin.ModelAdmin):
+    list_display = ('codeforces_id', 'org')
+    search_fields = ('ho', 'ten', 'codeforces_id')
+admin.site.register(ModelMember)
+```
