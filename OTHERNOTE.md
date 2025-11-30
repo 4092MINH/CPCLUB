@@ -17,3 +17,10 @@ Dùng lệnh sau
 ```
 git remote add <name remote> <url repo>
 ```
+THAO TÁC LẠI TỪ ĐẦU
+=
+CÁC CÂU LỆNH TERMINAL
+-
+### TẠO DỰ ÁN MỚI
+```
+django-admin startproject blog_reset

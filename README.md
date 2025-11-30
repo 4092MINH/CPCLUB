@@ -20,7 +20,7 @@ pip --version
 ### DJANGO
 
 ```
-django-admin --version
+py -m django --version
 ```
 
 CÁC LỆNH TẢI VỀ
@@ -137,3 +137,43 @@ urlpatterns = [
 > ```
 
 Lúc này thì khi chạy dự án thì nó sẽ ra kết quả *Hello World*
+
+TEMPLATE
+---
+- Template là những trang html giúp phản hồi lại các yêu cầu http từ người dùng
+- Nó nằm trong thư mục template và thư mục đó cũng **nằm trong** app members
+
+Ta tạo tạm một file `index.html` như sau
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Hello</h1>
+    Ta vừa mới tạo xong một template rồi đó
+</body>
+</html>
+```
+Sau đó, ta chỉnh sửa phản hồi trong phần views như sau:
+```py
+from django.shortcuts import render
+from django.http import HttpResponse
+
+def members(request):
+     return render(request, 'index.html')
+```
+> [!caution]
+> Nếu chúng ta muốn thực hiện những dự án phức tạp hơn thì ta phải thêm app vào trong `setting.py` để hệ thống dễ dàng kiểm soát bằng cách thêm tên app vào phần `INSTALLED_APP[]`
+
+Sau đó thì ta chạy lệnh sau
+```
+python manage.py makemigration
+python manage.py migrate
+```
+MODEL
+-
+Một class là một cái bảng trong databasse
