@@ -6,7 +6,12 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Hello</h1>
-    Ta vừa mới tạo xong một template rồi đó
+    <h1>Học sinh trong lớp thầy Thái</h1>
+    <ul>
+        {% for x in hocsinh %}
+            <li>{{x.ho}} {{x.ten}}</li>
+        {% endfor %}
+    </ul>
+
 </body>
 </html>

@@ -1,7 +1,7 @@
 SETUP DJANGO
 ===
-
 ---
+*Nguồn: W3S*
 
 CÁC LỆNH CHECK PHIÊN BẢN
 ---
@@ -248,4 +248,44 @@ class MemberAdmin(admin.ModelAdmin):
     list_display = ('codeforces_id', 'org')
     search_fields = ('ho', 'ten', 'codeforces_id')
 admin.site.register(ModelMember)
+```
+
+TỪ MODEL CHO ĐẾN SẢN PHẨM
+=
+Bài này sẽ giúp chúng ta cách trình bày dữ liệu từ model lên html
+
+TẠO TEMPLATE
+-
+Sau khi tạo model, thì ta làm một file html như sau
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Học sinh trong lớp thầy Thái</h1>
+    <ul>
+        {% for x in hocsinh %}
+            <li>{{x.ho}} {{x.ten}}</li> <!--Cái này ta gọi là biến-->
+        {% endfor %} <!--Những cái trong %% được gọi là Django Tag-->
+    </ul>
+</body>
+</html>
+```
+
+CHỈNH SỬA VIEW
+-
+Ta phải bỏ model vào view. Trong file views ta phải import tên model và gửi nó sang template như sau:
+```py
+from django.shortcuts import render
+from django.http import HttpResponse
+from .models import ModelMember
+
+def members(request):
+     hocsinh = ModelMember.objects.all()
+     return render(request, 'index.html', {'hocsinh': hocsinh})
 ```
