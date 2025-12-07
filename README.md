@@ -289,3 +289,68 @@ def members(request):
      hocsinh = ModelMember.objects.all()
      return render(request, 'index.html', {'hocsinh': hocsinh})
 ```
+CÁCH TẠO PAGE THÔNG TIN CHI TIẾT
+=
+TEMPLATE
+-
+Ta vẫn cứ làm như cũ
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Học sinh trong lớp thầy Thái</h1>
+    <ul>
+        {% for x in hocsinh %}
+            <li>{{x.ho}} {{x.ten}}</li>
+        {% endfor %}
+    </ul>
+
+</body>
+</html>
+```
+VIEWS
+-
+Ta thêm hàm mới như sau
+```py
+def detail(request, member_id): # Đây là id mà lệnh sẽ gửi vào
+    member = ModelMember.objects.get(id=member_id) # Nó sẽ lấy lệnh tương ứng
+    return render(request, 'detail.html', {'hocsinh': member})
+```
+URLS
+-
+Ta cũng thêm đường link nhưng mà ta chỉnh sửa một chút
+```py
+from django.urls import path
+from . import views
+urlpatterns = [
+    path('', views.members),
+    path('detail/<int:member_id>', views.detail, name='member_detail'),
+]
+```
+CÁCH ẤN VÀO TÀI KHOẢN THÌ NÓ HIỂN THỊ THÔNG TIN
+-
+Ta chỉnh sửa như sau. Cụ thể, ta thêm một cái `<a>` với đường link tương ứng là được
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Học sinh trong lớp thầy Thái</h1>
+    <ul>
+        {% for x in hocsinh %}
+            <li><a href="detail/{{x.id}}">{{x.ho}} {{x.ten}}</a></li>
+        {% endfor %}
+    </ul>
+
+</body>
+</html>
+```
