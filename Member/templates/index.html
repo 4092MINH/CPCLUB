@@ -9,7 +9,7 @@
     <h1>Học sinh trong lớp thầy Thái</h1>
     <ul>
         {% for x in hocsinh %}
-            <li>{{x.ho}} {{x.ten}}</li>
+            <a href="/member/{{x.id}}"><li>{{x.ho}} {{x.ten}}</li></a>
         {% endfor %}
     </ul>
 
