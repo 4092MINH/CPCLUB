@@ -247,7 +247,7 @@ from .models import ModelMember
 class MemberAdmin(admin.ModelAdmin):
     list_display = ('codeforces_id', 'org')
     search_fields = ('ho', 'ten', 'codeforces_id')
-admin.site.register(ModelMember)
+admin.site.register(ModelMember, MemberAdmin)
 ```
 
 TỪ MODEL CHO ĐẾN SẢN PHẨM
