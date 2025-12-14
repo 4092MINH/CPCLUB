@@ -237,6 +237,24 @@ class ModelMember(models.Model):
     def __str__(self):
         return f"{self.ho} {self.ten}"
 ```
+CÁCH THAY ĐỔI GIAO DIỆN CỦA TRANG ADMIN
+---
+Ta có thể dùng `admin.site` để thay đổi giao diện như `title`, `header`, `index_title`
+```py
+from django.contrib import admin
+from .models import Member
+
+admin.site.site_header = "Hệ thống quản lý học sinh"
+admin.site.site_title = "Quản lý học sinh"
+admin.site.index_title = "Chúc một ngày tốt lành"
+class MemberAdmin(admin.ModelAdmin):
+    list_display = ['name', 'email', 'student_id', 'diem_cong', 'slug']
+    search_fields = ['name', 'email', 'student_id']
+    prepopulated_fields = {'slug': ('name',)} # Auto-generate slug from name field
+
+admin.site.register(Member, MemberAdmin)
+```
+
 CÁCH THÊM MỤC HIỂN THỊ VÀ MỤC TÌM KIẾM
 -
 Tạo một hàm tên là `MemberAdmin()` và làm như sau
