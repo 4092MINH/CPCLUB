@@ -372,3 +372,46 @@ Ta chỉnh sửa như sau. Cụ thể, ta thêm một cái `<a>` với đường
 </body>
 </html>
 ```
+CÁCH DEPLOY DỰ ÁN
+=
+Ta dùng Render để chạy code django
+
+CHUẨN BỊ
+-
+### Cài Gunicorn (Web Server) và Whitenoise (Quản lý file tĩnh):
+
+```
+pip install gunicorn whitenoise
+```
+
+### TẠO FILE `requirements.txt`
+```
+pip freeze > requirements.txt
+```
+### CẤU HÌNH `settings.py`
+```py
+MIDDLEWARE = [
+    'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware', # Thêm dòng này
+    # ... các dòng khác
+]
+```
+### CẤU HÌNH STATIC FILES
+```py
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+```
+### CHO PHÉP HOST
+```py
+ALLOWED_HOSTS = ['*'] # Hoặc tên miền render sau khi tạo (ví dụ: 'app-name.onrender.com')
+DEBUG = False # Khi chạy thật phải tắt Debug
+```
+### TẠO FILE `build.sh`
+```
+#!/usr/bin/env bash
+# exit on error
+set -o errexit
+
+pip install -r requirements.txt
+python manage.py collectstatic --no-input
+python manage.py migrate
+```
